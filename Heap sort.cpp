@@ -2,15 +2,14 @@
 
 Heap Sort
 
-You are given an array ‘ARR’ consisting of 'N' integers, and your task is to sort the given array in non-decreasing order using the Heap sort algorithm.
+You are given an array ‘ARR’ consisting of 'N' integers, and your task is to sort the given array in non-decreasing order using the 
+Heap sort algorithm.
 
 Constraints:
 1 <= T <= 10
 1 <= N <= 10^5
 -10^9 <= ARR[i] <= 10^9
-Where ‘T’ denotes the number of test cases and ‘N’ denotes the size of ‘ARR’.
 
-Time Limit: 1sec
 Sample Input 1:
 1
 4 
