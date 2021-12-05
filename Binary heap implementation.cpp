@@ -33,7 +33,7 @@ extractMin() since the heap is empty thus no min element exist so -1 is printed.
 Example 2:
 Input: 
 Q = 5
-Queries: insertKey(8), insertKey(9), deleteKey(1), extractMin(), extractMin(), buildheap
+Queries: insertKey(8), insertKey(9), deleteKey(1), extractMin(), extractMin(), buildheap()
 Output: 8 -1
 
 Constraints:
