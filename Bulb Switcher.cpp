@@ -30,10 +30,10 @@ Output: 1
 Constraints:
 0 <= n <= 10^9
 */
-
 class Solution {
 public:
-    // Logic : All perfect squares have odd number of factors. So, it will participate in odd no. of cycle. Hence, Bulb left On.
+    // Logic : Bulbs with number of perfect squares have left on. All perfect squares have odd number of factors. 
+    // So, it will participate in odd no. of cycle.
     int bulbSwitch(int n) {
         
         int cnt = 0;
