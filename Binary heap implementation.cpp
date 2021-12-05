@@ -33,7 +33,7 @@ extractMin() since the heap is empty thus no min element exist so -1 is printed.
 Example 2:
 Input: 
 Q = 5
-Queries: insertKey(8), insertKey(9), deleteKey(1), extractMin(), extractMin()
+Queries: insertKey(8), insertKey(9), deleteKey(1), extractMin(), extractMin(), buildheap
 Output: 8 -1
 
 Constraints:
@@ -65,80 +65,81 @@ Struct MinHeap{
         return (i-1)/2;
     }
 
-// Time Complexity : ϴ(1) + O(log h)
-int extractMin() {
-    
-    if(heap_size == 0) return -1;
-    
-    if(heap_size == 1){
+//=> functions : extractMin(), deletekey(x), insertkey(x), minHeapify() 
+    // Time Complexity : ϴ(1) + O(log h)
+    int extractMin() {
+
+        if(heap_size == 0) return -1;
+
+        if(heap_size == 1){
+            heap_size--;
+            return harr[0];
+        }
+
+        int ans = harr[0];
+        swap(harr[0], harr[heap_size-1]);
         heap_size--;
-        return harr[0];
+        MinHeapify(0);
+
+    return ans;    
     }
-    
-    int ans = harr[0];
-    swap(harr[0], harr[heap_size-1]);
-    heap_size--;
-    MinHeapify(0);
-    
-return ans;    
-}
 
-// Time Complexity: O(log n) + O(log n)
-void deleteKey(int i){
+    // Time Complexity: O(log n) + O(log n)
+    void deleteKey(int i){
 
-    if(i >= heap_size) return;
-    
-    decreaseKey(i, INT_MIN);
-    
-    extractMin();
-}
+        if(i >= heap_size) return;
 
-// Time Complexity: O(log h) = O(log n)
-void insertKey(int x){
-    
-    if(heap_size == capacity) return;
-    
-    heap_size++;
-    harr[heap_size-1] = x;
-    
-    int i = heap_size-1;
-    while(i != 0 && harr[parent(i)] > harr[i]){
-        swap(harr[i], harr[parent(i)]);
-        i = parent(i);
+        decreaseKey(i, INT_MIN);
+
+        extractMin();
     }
-}
 
-//Time Complexity : O(log n)
-void decreaseKey(int i, int new_val){  
-    
-    harr[i] = new_val;
-    while (i != 0 && harr[parent(i)] > harr[i]) {
-        swap(harr[i], harr[parent(i)]);
-        i = parent(i);
-    }
-}
+    // Time Complexity: O(log h) = O(log n)
+    void insertKey(int x){
 
-// Time complexity : O(h) = O(log n)
-// Space complexity : O(h)
-void MinHeapify(int i){
-    
-    int l = left(i);
-    int r = right(i);
-    int smallest = i;
-    
-    if (l < heap_size && harr[l] < harr[smallest]) smallest = l;
-    if (r < heap_size && harr[r] < harr[smallest]) smallest = r;
-    if (smallest != i) {
-        swap(harr[i], harr[smallest]);
-        MinHeapify(smallest);
-    }
-}
+        if(heap_size == capacity) return;
 
-void MinHeap::BuildHeap(int i){
-    
-    for(int i = (size-2)/2; i >= 0; i--){     //size-1-1 / 2
-        minHeapify(i);
+        heap_size++;
+        harr[heap_size-1] = x;
+
+        int i = heap_size-1;
+        while(i != 0 && harr[parent(i)] > harr[i]){
+            swap(harr[i], harr[parent(i)]);
+            i = parent(i);
+        }
     }
-}
+
+    //Time Complexity : O(log n)
+    void decreaseKey(int i, int new_val){  
+
+        harr[i] = new_val;
+        while (i != 0 && harr[parent(i)] > harr[i]) {
+            swap(harr[i], harr[parent(i)]);
+            i = parent(i);
+        }
+    }
+
+    // Time complexity : O(h) = O(log n)
+    // Space complexity : O(h)
+    void MinHeapify(int i){
+
+        int l = left(i);
+        int r = right(i);
+        int smallest = i;
+
+        if (l < heap_size && harr[l] < harr[smallest]) smallest = l;
+        if (r < heap_size && harr[r] < harr[smallest]) smallest = r;
+        if (smallest != i) {
+            swap(harr[i], harr[smallest]);
+            MinHeapify(smallest);
+        }
+    }
+
+    void BuildHeap(int i){
+
+        for(int i = (size-2)/2; i >= 0; i--){     //size-1-1 / 2
+            minHeapify(i);
+        }
+    }
 
 
