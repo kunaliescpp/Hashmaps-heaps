@@ -41,7 +41,6 @@ Constraints:
 1 <= x <= 10^4
 */
 
-/* structure of the class MinHeap
 Struct MinHeap{
 
     int arr[];
@@ -65,11 +64,9 @@ Struct MinHeap{
     int parent(int i){
         return (i-1)/2;
     }
-};
-*/
 
 // Time Complexity : ϴ(1) + O(log h)
-int MinHeap::extractMin() {
+int extractMin() {
     
     if(heap_size == 0) return -1;
     
@@ -87,7 +84,7 @@ return ans;
 }
 
 // Time Complexity: O(log n) + O(log n)
-void MinHeap::deleteKey(int i){
+void deleteKey(int i){
 
     if(i >= heap_size) return;
     
@@ -97,7 +94,7 @@ void MinHeap::deleteKey(int i){
 }
 
 // Time Complexity: O(log h) = O(log n)
-void MinHeap::insertKey(int x){
+void insertKey(int x){
     
     if(heap_size == capacity) return;
     
@@ -112,7 +109,7 @@ void MinHeap::insertKey(int x){
 }
 
 //Time Complexity : O(log n)
-void MinHeap::decreaseKey(int i, int new_val){  
+void decreaseKey(int i, int new_val){  
     
     harr[i] = new_val;
     while (i != 0 && harr[parent(i)] > harr[i]) {
@@ -123,7 +120,7 @@ void MinHeap::decreaseKey(int i, int new_val){
 
 // Time complexity : O(h) = O(log n)
 // Space complexity : O(h)
-void MinHeap::MinHeapify(int i){
+void MinHeapify(int i){
     
     int l = left(i);
     int r = right(i);
@@ -137,11 +134,11 @@ void MinHeap::MinHeapify(int i){
     }
 }
 
-// void MinHeap::BuildHeap(int i){
+void MinHeap::BuildHeap(int i){
     
-//     for(int i = (size-2)/2; i >= 0; i--){     //size-1-1 / 2
-//         minHeapify(i);
-//     }
-// }
+    for(int i = (size-2)/2; i >= 0; i--){     //size-1-1 / 2
+        minHeapify(i);
+    }
+}
 
 
