@@ -1,4 +1,5 @@
-/* Problem Link: https://practice.geeksforgeeks.org/problems/smallest-subarray-with-all-occurrences-of-a-most-frequent-element2258/1
+/* 
+Problem Link: https://practice.geeksforgeeks.org/problems/smallest-subarray-with-all-occurrences-of-a-most-frequent-element2258/1
 
 Smallest subarray with all occurrences of a most frequent element 
 
@@ -72,3 +73,5 @@ vector<int> smallestSubsegment(int a[], int n){
 
 return res;
 }
+
+
