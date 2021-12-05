@@ -7,8 +7,8 @@ Given two strings s and t, determine if they are isomorphic.
 
 Two strings s and t are isomorphic if the characters in s can be replaced to get t.
 
-All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map 
-to the same character, but a character may map to itself.
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters 
+may map to the same character, but a character may map to itself.
 
 Example 1:
 Input: s = "egg", t = "add"
@@ -34,13 +34,8 @@ public:
     bool isIsomorphic(string s, string t) {
         
         unordered_map<char, char>m1;                      // key= s[i], value= t[i]
-        
         set<char>se;                                      // key = t[i]=value= t[i]
-        
-       //s is ok t is not ok  (found error by checking its prv copy case)
-       // t is ok s is not ok (found error by checking its prv copy case)
-       // both s and t is ok   (it is a fresh case or prv ditto copy case)
-        
+       
         for(int i =0; i < s.size(); i++){
             
             if(m1.find(s[i]) != m1.end()){                //if it is already present in map
@@ -54,15 +49,14 @@ public:
                   return false;                              // char of s is not attached to it till now, so it 
                }                                             // means it is attached to other char.
               
-              
                else{                                             // fresh char should be inserted
                   se.insert(t[i]);
                   m1[s[i]] = t[i];     
                }
            }
-        
         }
     return true;
     }
 };
+
 
