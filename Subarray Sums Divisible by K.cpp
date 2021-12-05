@@ -23,7 +23,6 @@ Constraints:
 2 <= k <= 104
 */
 
-
 class Solution {
 public:
     int subarraysDivByK(vector<int>& nums, int k) {
