@@ -48,6 +48,7 @@ For the second test case:
 One possible min-heap representation of the input array is the array [ 0, 8, 9 ].
 */
 
+// Time complexity : O(log n)
 void MinHeapify(vector<int> &arr, int i, int n){
     
     int l = 2*i + 1;
