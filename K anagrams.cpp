@@ -1,4 +1,5 @@
-/* Problem Link: https://practice.geeksforgeeks.org/problems/check-if-two-strings-are-k-anagrams-or-not/1
+/* 
+Problem Link: https://practice.geeksforgeeks.org/problems/check-if-two-strings-are-k-anagrams-or-not/1
 
 Check if two strings are k-anagrams or not 
 
@@ -15,7 +16,7 @@ Output: 1
 Explanation: Can change fd to gk
 
 Constraints:
-1 ≤ length of String ≤ 105
+1 ≤ length of String ≤ 10^5
 1 ≤ K ≤ length of String
 */
 
@@ -43,3 +44,5 @@ bool areKAnagrams(string s, string p, int k) {
 
 return false; 
 }
+
+
