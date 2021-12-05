@@ -5,7 +5,8 @@ Find All Anagrams in a String
 
 Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
 
-An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters 
+exactly once.
 
 Example 1:
 Input: s = "cbaebabacd", p = "abc"
@@ -24,7 +25,6 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
  
 
 Constraints:
-
 1 <= s.length, p.length <= 3 * 104
 s and p consist of lowercase English letters.
 */
@@ -32,35 +32,35 @@ s and p consist of lowercase English letters.
 class Solution {
 public:
     
-     bool areSame(map<char, int>& mps, map<char, int>& mpt){
-        
-        for(auto [ch, freq] : mpt){
-            if(freq != mps[ch]) return false;
-        }
-    return true;
-    }
+    bool areSame(map<char, int>& mps, map<char, int>& mpt){
+
+       for(auto [ch, freq] : mpt){
+           if(freq != mps[ch]) return false;
+       }
+   return true;
+   }
+
+   vector<int> findAnagrams(string s, string p) {
+
+       map<char, int>mps;             //txt map
+       map<char, int>mpt;             //pattern  map
+       for( int i = 0; i < p.size(); i++){
+           mps[s[i]]++; 
+           mpt[p[i]]++;
+       }
+
+       vector<int>v;
+       if(areSame(mps, mpt) == true) v.push_back(0);
+
+       int i = 1, j = p.size();
+       while (j < s.size()){
+
+           mps[s[j]]++;
+           mps[s[j - p.size()]]--;
+           if(areSame(mps, mpt) == true) v.push_back(i);
+           i++; j++;
+       }
     
-    vector<int> findAnagrams(string s, string p) {
-        
-        map<char, int>mps;             //txt map
-        map<char, int>mpt;             //pattern  map
-        for( int i = 0; i < p.size(); i++){
-            mps[s[i]]++; 
-            mpt[p[i]]++;
-        }
-            
-        vector<int>v;
-        if(areSame(mps, mpt) == true) v.push_back(0);
-        
-        int i = 1, j = p.size();
-        while (j < s.size()){
-            
-            mps[s[j]]++;
-            mps[s[j - p.size()]]--;
-            if(areSame(mps, mpt) == true) v.push_back(i);
-            i++; j++;
-        }
-            
-    return v;
-    }
+   return v;
+   }
 };
