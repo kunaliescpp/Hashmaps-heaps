@@ -28,15 +28,12 @@ Input: n = 1
 Output: 1
  
 Constraints:
-0 <= n <= 109
-Accepted
-100,721
-Submissions
+0 <= n <= 10^9
 */
 
 class Solution {
 public:
-    // Logic : All perfect squares have even number of factors (2n + 1) -> Bulb left On
+    // Logic : All perfect squares have odd number of factors. So, it will participate in odd no. of cycle. Hence, Bulb left On.
     int bulbSwitch(int n) {
         
         int cnt = 0;
