@@ -12,14 +12,11 @@ void push(int val) pushes an integer val onto the top of the stack.
 int pop() removes and returns the most frequent element in the stack.
 If there is a tie for the most frequent element, the element closest to the stack's top is removed and returned.
  
-
 Example 1:
-Input
-["FreqStack", "push", "push", "push", "push", "push", "push", "pop", "pop", "pop", "pop"]
+Input: ["FreqStack", "push", "push", "push", "push", "push", "push", "pop", "pop", "pop", "pop"]
 [[], [5], [7], [5], [7], [4], [5], [], [], [], []]
-Output
-[null, null, null, null, null, null, null, 5, 7, 5, 4]
-Explanation
+Output: [null, null, null, null, null, null, null, 5, 7, 5, 4]
+Explanation:
 FreqStack freqStack = new FreqStack();
 freqStack.push(5); // The stack is [5]
 freqStack.push(7); // The stack is [5,7]
@@ -34,9 +31,8 @@ freqStack.pop();   // return 4, as 4, 5 and 7 is the most frequent, but 4 is clo
  
 
 Constraints:
-
-0 <= val <= 109
-At most 2 * 104 calls will be made to push and pop.
+0 <= val <= 10^9
+At most 2 * 10^4 calls will be made to push and pop.
 It is guaranteed that there will be at least one element in the stack before calling pop.
 */
 
@@ -51,21 +47,22 @@ public:
         
     }
     
-    void push(int val) {
-        
+    void push(int val){ 
+     
         mp2[val]++;
         mp1[mp2[val]].push(val);
         maxFreq = max(maxFreq, mp2[val]);
     }
     
-    int pop() {
-        
-          int f = mp1[maxFreq].top();
-          mp1[maxFreq].pop();
-          mp2[f]--;
-          if(mp1[maxFreq].empty() == true) maxFreq--;
-       
+    int pop(){
+     
+        int f = mp1[maxFreq].top();
+        mp1[maxFreq].pop();
+        mp2[f]--;
+        if(mp1[maxFreq].empty() == true) maxFreq--;
+
     return f;
     }
 };
+
 
