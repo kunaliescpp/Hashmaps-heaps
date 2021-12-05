@@ -135,10 +135,12 @@ Struct MinHeap{
         }
     }
 
-    void BuildHeap(int i){
+//     void BuildHeap(int i){
 
-        for(int i = (size-2)/2; i >= 0; i--){     //size-1-1 / 2
-            minHeapify(i);
-        }
-    }
+//         for(int i = (size-2)/2; i >= 0; i--){     //size-1-1 / 2
+//             minHeapify(i);
+//         }
+//     }
 };
+
+
