@@ -1,4 +1,5 @@
-/* Problem Link: https://practice.geeksforgeeks.org/problems/pairs-of-non-coinciding-points4141/1
+/* 
+Problem Link: https://practice.geeksforgeeks.org/problems/pairs-of-non-coinciding-points4141/1
 
 Pairs of Non Coinciding Points 
 
@@ -61,3 +62,5 @@ int numOfPairs(int X[], int Y[], int N) {
     }
 return cnt;
 }
+
+
