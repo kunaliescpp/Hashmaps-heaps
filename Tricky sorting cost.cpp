@@ -47,3 +47,5 @@ int sortingCost(int n, int arr[]){
 
 return cnt;
 }
+
+
