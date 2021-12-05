@@ -32,14 +32,15 @@ public:
         um[0] = 1;
         
         for(int i = 0; i < nums.size(); i++){
-            
             sum+= nums[i];
             
             if(um.find(sum-k) != um.end()) cnt+= um[sum-k];
              
-                um[sum]++;
+             um[sum]++;
         }
     
     return cnt;
     }
 };
+
+
