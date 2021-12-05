@@ -1,4 +1,5 @@
-/* Problem Link: https://practice.geeksforgeeks.org/problems/count-pairs-in-array-divisible-by-k/1
+/* 
+Problem Link: https://practice.geeksforgeeks.org/problems/count-pairs-in-array-divisible-by-k/1
 
 Count pairs in array divisible by K 
 
@@ -21,7 +22,6 @@ Constraints :
 1 <= K <= 100
 */
 
-  
 int countKdivPairs(int A[], int n, int k){
 
     unordered_map<int, int> mp;
@@ -48,4 +48,5 @@ int countKdivPairs(int A[], int n, int k){
     }
 return ans;
 }
+
 
