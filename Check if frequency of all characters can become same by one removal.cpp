@@ -19,24 +19,45 @@ Constraints:
 1 <= str.length() <= 10^4
 */
 
-string getSmallest(long long n) {
+class Solution{
+public:	
 
-    if(n == 1) return "1";
-    string str = "";
-    int factor = 9;
+static bool mycmp(pair<int, int>& a, pair<int, int>& b){
+    // if(a.second < b.second) return true;
+return a.second < b.second;
+}
 
-    while(n > 1 && factor > 1){
 
-        if(n % factor == 0){
-            str += (factor+'0');
-            n = n/factor;
-        } else{
-            factor--;
-        }
+bool sameFreq(string s){
+
+    int n = s.size();
+    unordered_map<char, int> mp1;
+    for(int i = 0; i < n; i++){
+        mp1[s[i]]++;
     }
 
-    reverse(str.begin(), str.end());
-    if(n == 1) return str;
+    unordered_map<int, int> mp2;
+    for(auto x : mp1){
+        mp2[x.second]++;
+    }
 
-return "-1";
+    if(mp2.size() == 1) return true;
+
+    else if(mp2.size() == 2){
+
+        vector<pair<int, int>> v;
+        for(auto x : mp2){                              // 4 - 1
+            v.push_back({x.first, x.second});           // 2 - 2
+        }
+
+        sort(v.begin(), v.end(), mycmp);
+
+        if(v[0].first == 1 && v[0].second == 1) return true; // 1 unknown alphabet
+        else if(abs(v[1].first - v[0].first) == 1 && v[0].second == 1) return true;
+    }
+
+return false;
 }
+};
+
+
