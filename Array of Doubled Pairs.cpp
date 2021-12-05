@@ -3,8 +3,8 @@ Problem Link: https://leetcode.com/problems/array-of-doubled-pairs/
 
 Array of Doubled Pairs
 
-Given an integer array of even length arr, return true if it is possible to reorder arr such that arr[2 * i + 1] = 2 * arr[2 * i] for every 0 <= i < len(arr) / 2, or false 
-otherwise.
+Given an integer array of even length arr, return true if it is possible to reorder arr such that arr[2 * i + 1] = 2 * arr[2 * i] for every 0 <= i < len(arr) / 2, 
+or false otherwise.
 
 Example 1:
 Input: arr = [3,1,3,6]
@@ -60,3 +60,5 @@ public:
     return true;
     }
 };
+
+
