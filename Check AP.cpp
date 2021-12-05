@@ -1,4 +1,5 @@
-/* Problem Link: https://practice.geeksforgeeks.org/problems/check-arithmetic-progression1842/1
+/* 
+Problem Link: https://practice.geeksforgeeks.org/problems/check-arithmetic-progression1842/1
 
 Check Arithmetic Progression 
 
@@ -15,11 +16,11 @@ Input: N=4
 arr[] = {12, 40, 11, 20}
 Output: NO
 
+
 Constraints:
 2 ≤ N ≤ 10^5
 */
   
-
 bool checkIsAP(int arr[], int n){
 
     unordered_map<int, bool> mp;
@@ -41,3 +42,4 @@ bool checkIsAP(int arr[], int n){
 return true;
 }
  
+
