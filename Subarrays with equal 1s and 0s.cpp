@@ -1,4 +1,5 @@
-/* problem Link : https://practice.geeksforgeeks.org/problems/count-subarrays-with-equal-number-of-1s-and-0s-1587115620/1
+/* 
+problem Link : https://practice.geeksforgeeks.org/problems/count-subarrays-with-equal-number-of-1s-and-0s-1587115620/1
 
 Given an array containing 0s and 1s. Find the number of subarrays having equal number of 0s and 1s.
 
@@ -19,22 +20,24 @@ Constraints:
 0 <= A[i] <= 1
 */
 
-  long long int countSubarrWithEqualZeroAndOne(int arr[], int n){
+long long int countSubarrWithEqualZeroAndOne(int arr[], int n){
 
-     unordered_map<int, int> mp;
+   unordered_map<int, int> mp;
 
-     int ans = 0;
-     mp[0] = 1;
-     int cnt1 = 0, cnt0 = 0;       // prefix cnt of 0 & 1
-     for(int i = 0; i < n; i++){
-         if(arr[i] == 1) cnt1++;
-         else cnt0++;
+   int ans = 0;
+   mp[0] = 1;
+   int cnt1 = 0, cnt0 = 0;       // prefix cnt of 0 & 1
+   for(int i = 0; i < n; i++){
+       if(arr[i] == 1) cnt1++;
+       else cnt0++;
 
-         int diff = cnt1 - cnt0;
+       int diff = cnt1 - cnt0;
 
-         if(mp.count(diff) == 1) ans += mp[diff];
-         mp[diff]++;
-     }
+       if(mp.count(diff) == 1) ans += mp[diff];
+       mp[diff]++;
+   }
 
-  return ans;
-  }
+return ans;
+}
+
+
