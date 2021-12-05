@@ -1,9 +1,11 @@
-/* Problem Link: https://www.codingninjas.com/codestudio/problems/build-min-heap_1171167
+/* 
+Problem Link: https://www.codingninjas.com/codestudio/problems/build-min-heap_1171167
 
 Build Min Heap
 
 You are given an array 'ARR' of integers having 'N' elements. Your task is to convert the input array into a min-Binary Heap.
-A min-Binary heap is a complete binary tree in which the value of each internal node is smaller than or equal to the values of the children of that node.
+A min-Binary heap is a complete binary tree in which the value of each internal node is smaller than or equal to the values of the 
+children of that node.
 
 Note :
 1. Input array follows 0 - based indexing. 
@@ -67,3 +69,5 @@ vector<int> buildMinHeap(vector<int> &arr){
     }
 return arr;
 }
+
+
