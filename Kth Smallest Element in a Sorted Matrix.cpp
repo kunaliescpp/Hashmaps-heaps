@@ -26,7 +26,7 @@ n == matrix[i].length
 All the rows and columns of matrix are guaranteed to be sorted in non-decreasing order.
 1 <= k <= n2
 */
-
+  
 class Solution {
 public:
 
@@ -43,9 +43,12 @@ public:
         }     
     };
     
-    static bool mycmp(position &a, position &b){ 
-        return a.val < b.val;
-    }
+    class mycmp{
+        public: 
+        bool operator()(position &a, position &b){
+            return a.val > b.val;
+        }
+    };
     
     int kthSmallest(vector<vector<int>>& matrix, int k) {
         
@@ -54,19 +57,20 @@ public:
         int n = matrix[0].size();
         priority_queue<position, vector<position>, mycmp> pq;
         
-        for(int i = 0; i < m; i++){
-            pq.push(position(i, 0, matrix[i][j]));
+        for(int i = 0; i < m; i++){  
+            pq.push(position(i, 0, matrix[i][0]));  
         }
        
         int cnt = 0;
         while(!pq.empty()){
-            int r = pq.top().row;
+            int r = pq.top().row; 
             int c = pq.top().col;
             int v = pq.top().val;
+            pq.pop();
             cnt++;
             
             if(cnt == k) return v;
-            if(c+1 <= n-1) pq.push(r, c+1, matrix[r][c+1]);   
+            if(c+1 <= n-1) pq.push(position(r, c+1, matrix[r][c+1]));   
         }
     return 0;
     }
