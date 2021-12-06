@@ -33,10 +33,10 @@ public:
         for(int i = 0; i < n; i++){
             
             if(s.count(arr[i]-1) == 0){
-                int j = arr[i];
-                while(s.count(j) == 1) j++;
+                int sp = arr[i];
+                while(s.count(sp) == 1) sp++;
                 
-                len = max(len, j - arr[i]);
+                len = max(len, sp - arr[i]);
             }
         }
     
