@@ -3,7 +3,7 @@ Problem Link: https://practice.geeksforgeeks.org/problems/pairs-of-non-coincidin
 
 Pairs of Non Coinciding Points 
 
-In a given cartesian plane, there are N points. We need to find the Number of Pairs of  points(A, B) such that Point A and Point B
+In a given cartesian plane, there are N points. We need to find the Number of Pairs of points(A, B) such that Point A and Point B
 do not coincide.
 
 Manhattan Distance and the Euclidean Distance between the points should be equal.
