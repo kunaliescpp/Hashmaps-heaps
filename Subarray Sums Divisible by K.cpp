@@ -33,15 +33,15 @@ public:
         int sum = 0;
         int rem = 0;
         
-        um[0] = 1;                                                              
+        mp[0] = 1;                                                              
         int cnt = 0;
         for(int i = 0; i < n; i++){                                  
            sum = sum + nums[i];
            
            rem = sum % k;
-           if(rem < 0) rem+=k;
+           if(rem < 0) rem+= k;
            
-           if(mp.count(rem) == 1) cnt += um[rem];
+           if(mp.count(rem) == 1) cnt += mp[rem];
           
            um[rem]++;
         }
