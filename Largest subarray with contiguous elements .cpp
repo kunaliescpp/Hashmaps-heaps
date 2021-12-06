@@ -9,11 +9,8 @@ Examples:
 Input:  arr[] = {10, 12, 11};
 Output: Length of the longest contiguous subarray is 3
 
-Input:  arr[] = {14, 12, 11, 20};
-Output: Length of the longest contiguous subarray is 2
-
-Input:  arr[] = {1, 56, 58, 57, 90, 92, 94, 93, 91, 45};
-Output: Length of the longest contiguous subarray is 5
+Input:  arr[] = {10, 12, 12, 10, 10, 11, 10};
+Output: Length of the longest contiguous subarray is 2 
 */
 
 int findLength(int arr[], int n){
