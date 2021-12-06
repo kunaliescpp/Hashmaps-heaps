@@ -48,7 +48,7 @@ public:
     int minRefuelStops(int target, int startFuel, vector<vector<int>>& stations) {
         
         int n = stations.size();
-        priority_queue<int, vector<int> >pq;
+        priority_queue<int> pq;
         
         int curr = startFuel;
         int cnt = 0, i = 0;
