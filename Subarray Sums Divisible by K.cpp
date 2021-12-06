@@ -43,7 +43,7 @@ public:
            
            if(mp.count(rem) == 1) cnt += mp[rem];
           
-           um[rem]++;
+           mp[rem]++;
         }
      return cnt;
     }
