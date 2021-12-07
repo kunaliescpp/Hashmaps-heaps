@@ -11,20 +11,9 @@ Output: 3
 Explanation: The answer is "abc", with the length of 3.
   
 Example 2:
-Input: s = "bbbbb"
-Output: 1
-Explanation: The answer is "b", with the length of 1.
-  
-Example 3:
-Input: s = "pwwkew"
-Output: 3
-Explanation: The answer is "wke", with the length of 3.
-Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
-  
-Example 4:
-Input: s = ""
-Output: 0
- 
+Input: s = "abba"
+Output: 2
+
 
 Constraints:
 0 <= s.length <= 5 * 10^4
@@ -42,7 +31,7 @@ public:
             
             char curr = s[i];
         
-            if(mp.count(curr) == 1) j = max(j, mp[curr] + 1);  
+            if(mp.count(curr) == 1) j = max(j, mp[curr] + 1);   // test case - "abba"
             
             mp[curr] = i; 
             maxi = max(maxi, i-j+1);
