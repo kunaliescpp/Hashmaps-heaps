@@ -14,21 +14,6 @@ Output: true
 Explanation: Possible partition [1,1],[2,2],[3,3],[4,4].
   
 Example 2:
-Input: deck = [1,1,1,2,2,2,3,3]
-Output: false
-Explanation: No possible partition.
-  
-Example 3:
-Input: deck = [1]
-Output: false
-Explanation: No possible partition.
-  
-Example 4:
-Input: deck = [1,1]
-Output: true
-Explanation: Possible partition [1,1].
-  
-Example 5:
 Input: deck = [1,1,2,2,2,2]
 Output: true
 Explanation: Possible partition [1,1],[2,2],[2,2].
