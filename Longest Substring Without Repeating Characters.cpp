@@ -38,16 +38,16 @@ public:
         unordered_map<char, int>mp;
         int maxi = 0;
         int i = 0, j = 0;
-        while(j < s.size()){
+        while(i < s.size()){
             
-            char curr = s[j];
-            // int prvSeen = mp[curr];
-            if(mp.count(curr) == 1) i = max(i, mp[curr] + 1);  
+            char curr = s[i];
+        
+            if(mp.count(curr) == 1) j = max(j, mp[curr] + 1);  
             
-            mp[curr] = j; 
-            maxi = max(maxi, j-i+1);
+            mp[curr] = i; 
+            maxi = max(maxi, i-j+1);
             
-            j++;
+            i++;
         }
     return maxi;  
     }
