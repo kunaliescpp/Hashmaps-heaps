@@ -25,8 +25,6 @@ Constraints:
 
 //Similar Question = Arrange students in morning assembly in increasing order of their height
 
-//Approach : numOperations = n - ok     where ok = length of LIS
-
 int sortingCost(int n, int arr[]){
 
   unordered_map<int, int> mp;
