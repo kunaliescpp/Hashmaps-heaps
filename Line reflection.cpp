@@ -26,10 +26,10 @@ bool isReflected(vector<vector<int>> &points) {
       mp[points[i][0]].insert(points[i][1]); 
   }
 
-  double y = double (maxi + mini)/2.0;
+  double alpha = double (maxi + mini)/2.0;    // alpha = candidate of line || to y axis
   for(int i = 0; i < n; i++){
-      int x2 = 2*y-points[i][0];   //x2 = 2*y-x1
-      // int y2 = y1;
+      int x2 = 2*alpha-points[i][0];  
+    
       if(mp.count(x2) == false || mp[x2].count(points[i][1]) == false) return false;
   }
 return true;
