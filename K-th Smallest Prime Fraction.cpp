@@ -34,7 +34,7 @@ vector<int> getFractionsLessThanMid (vector<int>& arr, double mid){
         
         int n = arr.size();
         int cnt = 0;
-        int j = 1, temp = n-1-j+1;
+        int j = 1, temp = n-1;
         int p = 0, q = 1;
         for(int i = 0; i < n-1; i++){
 
