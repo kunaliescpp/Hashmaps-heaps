@@ -30,8 +30,9 @@ All the numbers of arr are unique and sorted in strictly increasing order.
 
 // Time complexity : n *log(no. of decimals btw 0 -> 1) = n log(10^9)
 // where no. of decimals = no. of mid taken
-vector<int> getFractionsLessThanMid (vector<int>& arr, int k, int n, double mid){
-
+vector<int> getFractionsLessThanMid (vector<int>& arr, double mid){
+        
+        int n = arr.size();
         int cnt = 0;
         int j = 1, temp = n-1-j+1;
         int p = 0, q = 1;
@@ -59,7 +60,7 @@ vector<int> kthSmallestPrimeFraction(vector<int>& arr, int k) {
 
         double mid = (low + high)/2;
 
-        vector<int> res = getFractionsLessThanMid(arr, k, n, mid);
+        vector<int> res = getFractionsLessThanMid(arr, mid);
 
         if(res[0] < k) low = mid;
         else if (res[0] > k) high = mid;
