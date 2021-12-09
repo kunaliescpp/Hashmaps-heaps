@@ -54,11 +54,11 @@ vector<Interval> employeeFreeTime(vector<vector<int>> &schedule) {
     vector<Interval> result;
     while(!pq.empty()){
         pair<int, int> left = pq.top(); pq.pop();
-        pair<int, int> right = pq.top(); //pq.pop();
 
         if(left.second == 0) cnt++;
         else cnt--;
 
+        pair<int, int> right = pq.top(); //pq.pop();
         if(left.second == 1 && right.second == 0){
             if(cnt == 0) result.push_back(Interval(left.first, right.first));
         }
