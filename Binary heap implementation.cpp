@@ -43,7 +43,7 @@ Constraints:
 
 Struct MinHeap{
 
-    int arr[];
+    int *arr;
     int size;
     int cap;
     
