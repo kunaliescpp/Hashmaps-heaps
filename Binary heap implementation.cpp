@@ -40,7 +40,7 @@ Constraints:
 1 <= x <= 10^4
 */
 
-//=> functions : push(val), pop(idx), extractMin()
+// MinHeap implementation using array... [functions : push(val), pop(idx), extractMin()]
 class MinHeap{
 
     public: 
