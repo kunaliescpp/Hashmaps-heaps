@@ -17,8 +17,7 @@ extractMin on the Binary Min Heap and call them as per the query given below:
 3) extractMin(): A query like this removes the min element from the min-heap and prints it .
 
 Example 1:
-Input: 
-Q = 7
+Input: Q = 7
 Queries: insertKey(4), insertKey(2), extractMin(), insertKey(6), deleteKey(0), extractMin(), extractMin()
 Output: 2 6 - 1
 Explanation: In the first test case for query 
