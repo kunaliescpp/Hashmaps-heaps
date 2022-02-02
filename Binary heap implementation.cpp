@@ -44,10 +44,10 @@ Constraints:
 Struct MinHeap{
 
     int *arr;
-    int size, cap;
+    int heap_size, cap;
     MinHeap(int c){
         arr = new int [c];
-        size = 0; 
+        heap_size = 0; 
         cap = c; 
     }
     
