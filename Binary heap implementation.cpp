@@ -44,11 +44,9 @@ Constraints:
 Struct MinHeap{
 
     int *arr;
-    int size;
-    int cap;
-    
+    int size, cap;
     MinHeap(int c){
-        arr = new int[c];
+        arr = new int [c];
         size = 0; 
         cap = c; 
     }
@@ -103,7 +101,6 @@ Struct MinHeap{
 
     //Time Complexity : O(log n)
     void decreaseKey(int i, int new_val){  
-
         harr[i] = new_val;
         while (i != 0 && harr[parent(i)] > harr[i]) {
             swap(harr[i], harr[parent(i)]);
@@ -128,7 +125,6 @@ Struct MinHeap{
     }
 
 //     void BuildHeap(int i){
-
 //         for(int i = (size-2)/2; i >= 0; i--){     //size-1-1 / 2
 //             minHeapify(i);
 //         }
