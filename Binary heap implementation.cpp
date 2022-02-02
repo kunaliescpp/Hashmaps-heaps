@@ -40,7 +40,7 @@ Constraints:
 1 <= x <= 10^4
 */
 
-//=> functions : extractMin(), deletekey(idx), insertkey(val), minHeapify() 
+//=> functions : extractMin(), deletekey(idx), insertkey(val)
 Struct MinHeap{
 
     int *arr;
