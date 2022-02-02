@@ -40,9 +40,11 @@ Constraints:
 1 <= x <= 10^4
 */
 
-//=> functions : extractMin(), deletekey(idx), insertkey(val)
-Struct MinHeap{
+//=> functions : push(val), pop(idx), extractMin()
+class MinHeap{
 
+    public: 
+    
     int *arr;
     int heap_size, cap;
     MinHeap(int c){
