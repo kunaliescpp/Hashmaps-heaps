@@ -45,26 +45,18 @@ Struct MinHeap{
 
     int arr[];
     int size;
-    int capacity;
+    int cap;
     
     MinHeap(int c){
         arr = new int[c];
         size = 0; 
-        capacity = c; 
+        cap = c; 
     }
     
-    int left(int i){
-        return 2*i + 1;
-    }
-    
-    int right(int i){
-        return 2*i + 2;
-    }
-    
-    int parent(int i){
-        return (i-1)/2;
-    }
-
+    int left(int i) return 2*i + 1;
+    int right(int i) return 2*i + 2;
+    int parent(int i) return (i-1)/2;
+   
 //=> functions : extractMin(), deletekey(x), insertkey(x), minHeapify() 
     // Time Complexity : ϴ(1) + O(log h)
     int extractMin() {
