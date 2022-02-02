@@ -40,6 +40,7 @@ Constraints:
 1 <= x <= 10^4
 */
 
+//=> functions : extractMin(), deletekey(idx), insertkey(val), minHeapify() 
 Struct MinHeap{
 
     int *arr;
@@ -53,8 +54,6 @@ Struct MinHeap{
     int left(int i){ return 2*i + 1; }
     int right(int i){ return 2*i + 2; }
     int parent(int i){ return (i-1)/2; }
-   
-//=> functions : extractMin(), deletekey(idx), insertkey(val), minHeapify() 
     
     // Time Complexity : ϴ(1) + O(log h)
     int extractMin() {
@@ -123,7 +122,6 @@ Struct MinHeap{
             MinHeapify(smallest);
         }
     }
-
 //     void BuildHeap(int i){
 //         for(int i = (size-2)/2; i >= 0; i--){     //size-1-1 / 2
 //             minHeapify(i);
