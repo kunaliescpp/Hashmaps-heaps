@@ -54,7 +54,8 @@ Struct MinHeap{
     int right(int i){ return 2*i + 2; }
     int parent(int i){ return (i-1)/2; }
    
-//=> functions : extractMin(), deletekey(x), insertkey(x), minHeapify() 
+//=> functions : extractMin(), deletekey(idx), insertkey(val), minHeapify() 
+    
     // Time Complexity : ϴ(1) + O(log h)
     int extractMin() {
 
