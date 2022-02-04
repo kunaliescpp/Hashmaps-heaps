@@ -23,23 +23,28 @@ Constraints:
   
 bool checkIsAP(int arr[], int n){
 
-    unordered_map<int, bool> mp;
+    set<int> s;
     if(n <= 1) return true;
 
-    int mini = 1e9, maxi = -1e9;
+    int mini = 1e9, sec_mini = 1e9;
     for(int i = 0; i < n; i++){
-        mini = min(mini, arr[i]);
-        maxi = max(maxi, arr[i]);
-        mp[arr[i]] = true;
+        s.insert(arr[i]);
+
+        if(arr[i] < mini){
+           sec_mini = mini;
+           mini = arr[i];
+        }
+
+        else if(arr[i] > mini && arr[i] < sec_mini) sec_mini = arr[i];
     }
 
-    int d = (maxi - mini) / (n-1);
-    for(int i = 0; i < n; i++){
-        int ai = mini + i * d;
-        if(mp.count(ai) == 0) return false;
+    int d = sec_mini - mini;
+    for(int i = 1; i < n; i++){
+        int curr = mini+(i*d);
+        if(s.count(curr) == 0) return false;
     }
 
 return true;
 }
- 
+
 
