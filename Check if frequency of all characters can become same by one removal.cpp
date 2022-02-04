@@ -19,45 +19,29 @@ Constraints:
 1 <= str.length() <= 10^4
 */
 
-class Solution{
-public:	
-
-static bool mycmp(pair<int, int>& a, pair<int, int>& b){
-    // if(a.second < b.second) return true;
-return a.second < b.second;
-}
-
-
 bool sameFreq(string s){
 
     int n = s.size();
-    unordered_map<char, int> mp1;
-    for(int i = 0; i < n; i++){
-        mp1[s[i]]++;
-    }
+    vector<int>freq(26, 0);
+    for(char c: s) freq[c-'a']++;
 
-    unordered_map<int, int> mp2;
-    for(auto x : mp1){
-        mp2[x.second]++;
-    }
+    map<int, int> mp;
+    for(int i = 0; i < 26; i++){
+        if(freq[i] > 0) mp[freq[i]]++;
+    } 
 
-    if(mp2.size() == 1) return true;
+    if(mp.size() == 1) return true;
+    else if(mp.size() == 2){
+        auto it = mp.begin();
+        int x1 = it->first, y1 = it->second;
+        it++;
+        int x2 = it->first, y2 = it->second;
+        if(x1 == 1 && y1 == 1) return true;
+        else if(y2==1 && (x2==(x1+1))) return true;
+        else return false;
+    } 
 
-    else if(mp2.size() == 2){
-
-        vector<pair<int, int>> v;
-        for(auto x : mp2){                              // 4 - 1
-            v.push_back({x.first, x.second});           // 2 - 2
-        }
-
-        sort(v.begin(), v.end(), mycmp);
-
-        if(v[0].first == 1 && v[0].second == 1) return true; // 1 unknown alphabet
-        else if(abs(v[1].first - v[0].first) == 1 && v[0].second == 1) return true;
-    }
-
-return false;
+    else return false;
 }
-};
 
 
