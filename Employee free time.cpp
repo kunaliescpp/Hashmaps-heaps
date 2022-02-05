@@ -38,33 +38,46 @@ We discard any intervals that contain inf as they aren't finite.
 
 // Time complexity: O(total no. of slots * employee number)
 
-vector<Interval> employeeFreeTime(vector<vector<int>> &schedule) {
+vector<vector<int>> employeeFreeTime(vector<vector<int>> &schedule) {
 
     int n = schedule.size();
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>> > pq; //min heap
 
     for(int i = 0; i < n; i++){
-        for(int j = 0; j < schedule[i].size(); j+=2){
-            pq.push(make_pair(schedule[i][j], 0));
-            pq.push(make_pair(schedule[i][j+1], 1));
+        for(int j = 0; j < schedule[i].size(); j++){
+            pq.push({schedule[i][j], 1});
+            j++;
+            pq.push({schedule[i][j], 0});
         }
     }
 
     int cnt = 0;  //workers at curr time
-    vector<Interval> result;
+    vector<vector<int>> result;
     while(!pq.empty()){
-        pair<int, int> left = pq.top(); pq.pop();
+        pair<int, int> f = pq.top(); pq.pop();
 
-        if(left.second == 0) cnt++;
+        if(f.second == 1) cnt++;
         else cnt--;
 
-        pair<int, int> right = pq.top(); //pq.pop();
-        if(left.second == 1 && right.second == 0){
-            if(cnt == 0) result.push_back(Interval(left.first, right.first));
+        if(cnt == 0 && !pq.empty()){
+          pair<int, int> s = pq.top(); //pq.pop();
+          if(f.second == 0 && s.second == 1){
+              if(cnt == 0) result.push_back({f.first, s.first});
+          }  
         }
     }
 
 return result;
 }
 
+int32_t main(){
+    
+    vector<vector<int>> v  = {{1,3,6,7},{2,4},{2,5,9,12}};
 
+    vector<vector<int>> ans = employeeFreeTime(v); 
+    for(vector<int>& vect1d: ans){
+        cout << "[" << vect1d[0] << "," << vect1d[1] << "]" << " ";
+    }
+
+return 0;
+}
