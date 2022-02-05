@@ -41,7 +41,7 @@ vector<int> findAnagrams(string s, string t) {
 
     int m = s.size(), n = t.size();
     unordered_map<char, int> mps, mpt;
-    for(int i = 0; i < t.size(); i++){
+    for(int i = 0; i < n; i++){
         mps[s[i]]++;
         mpt[t[i]]++;
     }
