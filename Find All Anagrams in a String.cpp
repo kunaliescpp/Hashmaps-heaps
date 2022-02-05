@@ -28,39 +28,36 @@ Constraints:
 1 <= s.length, p.length <= 3 * 104
 s and p consist of lowercase English letters.
 */
-
-class Solution {
-public:
     
-    bool areSame(map<char, int>& mps, map<char, int>& mpt){
+bool solver(unordered_map<char, int>& mps, unordered_map<char, int>& mpt){
+    for(auto &x : mpt){
+        if(mps[x.first] != mpt[x.first]) return false;
+    }
 
-       for(auto [ch, freq] : mpt){
-           if(freq != mps[ch]) return false;
-       }
-   return true;
-   }
+return true;
+}
 
-   vector<int> findAnagrams(string s, string p) {
+vector<int> findAnagrams(string s, string t) {
 
-       map<char, int>mps;             //txt map
-       map<char, int>mpt;             //pattern  map
-       for( int i = 0; i < p.size(); i++){
-           mps[s[i]]++; 
-           mpt[p[i]]++;
-       }
+    int m = s.size(), n = t.size();
+    unordered_map<char, int> mps, mpt;
+    for(int i = 0; i < t.size(); i++){
+        mps[s[i]]++;
+        mpt[t[i]]++;
+    }
 
-       vector<int>v;
-       if(areSame(mps, mpt) == true) v.push_back(0);
+    vector<int> v;
+    if(solver(mps, mpt) == true) v.push_back(0);
 
-       int i = 1, j = p.size();
-       while (j < s.size()){
+    int i = n, j = 1;
+    while(i < m){
+        mps[s[i]]++;
+        mps[s[j-1]]--;
+        if(solver(mps, mpt) == true) v.push_back(j);
+        i++; j++;
+    }
 
-           mps[s[j]]++;
-           mps[s[j - p.size()]]--;
-           if(areSame(mps, mpt) == true) v.push_back(i);
-           i++; j++;
-       }
-    
-   return v;
-   }
-};
+return v;
+}
+
+
