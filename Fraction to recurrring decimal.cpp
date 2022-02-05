@@ -32,45 +32,43 @@ Constraints:
 denominator != 0
 */
   
-        
-static bool isPositive(int &num, int &den){
-    if((num > 0 && den > 0) || (num < 0 && den < 0)) return true;
-
-return false;
-} 
 
 string fractionToDecimal(int num, int den) {
 
-    if(num == 0) return "0"; 
+    //step 1 
+    bool neg = false;
+    if(num > 0 && den < 0) neg = true;
+    else if(num < 0 && den > 0) neg = true;
 
-    string ans;            // ans = non-deci + deci
+    string ans = "";
+    if(neg == true) ans += "-"; 
 
-    if (isPositive(num , den) == false)  ans += "-";
+    num = abs(num);
+    den = abs(den);
 
-    num = abs(num); den = abs(den);
+    // step 2
+    ans += to_string(num/den);
+    int rem = num % den;
+    if(rem == 0) return ans;
 
-    long long q = num / den;
-    long long r = num % den;
-    ans += to_string(q);
+    ans += ".";
+    unordered_map<int, int> mp;
+    while(rem != 0){
+        if(mp.count(rem) == 1){
+            ans += ")";
+            ans.insert(mp[rem], "(");
+            break;
+        } else{
+            mp[rem] = ans.size();
 
-    if(r == 0) return ans;
-    else{
-        ans += '.';
-        unordered_map<long long, int> mp; 
-
-        while(r != 0){
-            if(mp.count(r) == 1){
-                ans += ")";
-                ans.insert(mp[r], "(");
-                return ans;
-            } else{
-                mp[r]=ans.length();
-                r*=10;
-                q = r / den;
-                r = r % den;
-                ans += to_string(q);
-            }
+            // if(num < den) rem = num 
+            rem = rem*10;                         // rem = num = 40*10
+            ans+= to_string(rem / den);           // ans+= (400/333)
+            rem = rem % den;                      // rem = num = 67
         }
     }
-return ans; 
+
+return ans;  
 }
+
+
