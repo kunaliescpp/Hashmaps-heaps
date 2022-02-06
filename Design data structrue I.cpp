@@ -1,12 +1,8 @@
 /*
 Problem Link: https://leetcode.com/problems/insert-delete-getrandom-o1/
 
-Design a data structure that supports insert, delete and getRandom in O(1) time.
+Design a data structure that supports insert, delete and getRandom in O(1) time with duplicates not allowed.
 
-Constraints:
--2^31 <= val <= 2^31 - 1
-At most 2 * 10^5 calls will be made to insert, remove, search and getRandom.
-There will be at least one element in the data structure when getRandom is called.
 */
 
 class mystructure {
