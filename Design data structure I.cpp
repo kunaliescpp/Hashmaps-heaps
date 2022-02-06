@@ -8,6 +8,7 @@ Design a data structure that supports insert, delete, search and getRandom in O(
 class mystructure {
 public:
     
+    // No use of constructor (that's why not made)
     vector<int> v;
     unordered_map<int, int> mp;
 
