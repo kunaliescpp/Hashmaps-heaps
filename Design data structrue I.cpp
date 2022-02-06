@@ -5,7 +5,7 @@ Design a data structure that supports insert, delete and getRandom in O(1) time.
 
 Constraints:
 -2^31 <= val <= 2^31 - 1
-At most 2 * 10^5 calls will be made to insert, remove, and getRandom.
+At most 2 * 10^5 calls will be made to insert, remove, search and getRandom.
 There will be at least one element in the data structure when getRandom is called.
 */
 
@@ -34,6 +34,11 @@ public:
         mp.erase(val);
     
     return true;
+    }
+        
+    int search(int val){
+        if(mp.count(val) == 1) return mp[val];
+    return -1;
     }
     
     int getRandom() {
