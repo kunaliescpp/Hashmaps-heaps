@@ -1,7 +1,7 @@
 /*
 Problem Link: https://leetcode.com/problems/insert-delete-getrandom-o1/
 
-Design a data structure that supports insert, delete and getRandom in O(1) time with duplicates not allowed.
+Design a data structure that supports insert, delete, search and getRandom in O(1) time with duplicates not allowed.
 
 */
 
