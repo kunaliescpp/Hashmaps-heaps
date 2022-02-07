@@ -30,38 +30,23 @@ Constraints:
 -10^4 < xi, yi < 10^4
 */
 
-class Solution {
-public:
-    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
-        
-        int n = points.size();
-        priority_queue<int> pq;   // max heap
-        for (int i = 0; i < n; i++) {
-            
-            int dis = (points[i][0]*points[i][0]) + (points[i][1]*points[i][1]);
-            if(pq.size() < k || dis < pq.top()){
-                if(pq.size() == k) pq.pop();
-                pq.push(dis);
-            }
-        }
-    
-        int num = pq.top();
-        int i = 0, j = n-1;
-        while(i <= j){
-            
-            int dis = (points[i][0]*points[i][0]) + (points[i][1]*points[i][1]);
-            if(dis <= num){
-                i++;
-            } else{
-                swap(points[i], points[j]);
-                j--;
-            }
-        }
-        
-        points.erase(points.begin() + k, points.end());
-    
-    return points;
+
+vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+
+    int n = points.size();
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;  
+    for(int i = 0; i < n; i++){
+        int dis = (points[i][0]*points[i][0]) + (points[i][1]*points[i][1]);
+        pq.push({dis, i});
     }
-};
+
+    vector<vector<int>> ans;
+    for(int i = 0; i < k; i++){
+        int f = pq.top().second; pq.pop();
+        ans.push_back(points[f]);
+    }
+
+return ans;
+}
 
 
