@@ -25,18 +25,16 @@ public:
     int longestConsecutive(vector<int>& arr) {
         
         int n = arr.size();
-        
         unordered_set<int> s;
-        int len = 0;
         for(int i = 0; i < n; i++) s.insert(arr[i]);
         
+        int len = 0;
         for(int i = 0; i < n; i++){
+            int val = arr[i];
+            if(s.count(val-1) == 0){
+                while(s.count(val+1) == 1) val++;
             
-            if(s.count(arr[i]-1) == 0){
-                int sp = arr[i];
-                while(s.count(sp) == 1) sp++;
-                
-                len = max(len, sp - arr[i]);
+                len = max(len, val-arr[i]+1);
             }
         }
     
