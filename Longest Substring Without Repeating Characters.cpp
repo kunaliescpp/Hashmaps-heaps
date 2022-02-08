@@ -28,14 +28,10 @@ public:
         int maxi = 0;
         int i = 0, j = 0;
         while(i < s.size()){
+            if(mp.count(s[i]) == 1) j = max(j, mp[s[i]]+1);   // test case - "abba"
             
-            char curr = s[i];
-        
-            if(mp.count(curr) == 1) j = max(j, mp[curr] + 1);   // test case - "abba"
-            
-            mp[curr] = i; 
+            mp[s[i]] = i; 
             maxi = max(maxi, i-j+1);
-            
             i++;
         }
     return maxi;  
