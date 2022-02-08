@@ -34,33 +34,20 @@ Constraints:
 */
 
 int numOfPairs(int X[], int Y[], int N) {
-
-    unordered_map<int, int> xaxis;
-    unordered_map<int, int> yaxis;
-    unordered_map<string, int> xy;
-    int cnt = 0;
+    map<int, int> mp1, mp2;
+    map<pair<int, int>, int> mp3;
+    int cnt1 = 0, cnt2 = 0, cnt3 = 0;
     for(int i = 0; i < N; i++){
+        if(mp1.count(X[i]) == 1) cnt1+= mp1[X[i]];
+        if(mp2.count(Y[i]) == 1) cnt2+= mp2[Y[i]];
+        if(mp3.count({X[i], Y[i]}) == 1) cnt3+= mp3[{X[i], Y[i]}];
 
-        //if(x2==x1 || y2==y1)
-        if(xaxis.count(X[i]) == 1){
-            cnt += xaxis[X[i]];
-            xaxis[X[i]]++;
-        } else{
-            xaxis[X[i]]++;
-        }  
-
-        if(yaxis.count(Y[i]) == 1){
-            cnt += yaxis[Y[i]];
-            yaxis[Y[i]]++;
-        } else{
-            yaxis[Y[i]]++;
-        }
-
-        string temp = to_string(X[i]) + "*" + to_string(Y[i]);
-        cnt -= (xy[temp]*2);
-        xy[temp]++;
+        mp1[X[i]]++;
+        mp2[Y[i]]++;
+        mp3[{X[i], Y[i]}]++;
     }
-return cnt;
+
+return (cnt1+cnt2-2*cnt3);
 }
 
 
