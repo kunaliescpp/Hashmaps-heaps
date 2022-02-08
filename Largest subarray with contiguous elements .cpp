@@ -4,6 +4,7 @@ Problem Link: https://www.geeksforgeeks.org/length-largest-subarray-contiguous-e
 Largest subarray with contiguous elements 
 
 Given an array of integers. Find the length of the longest subarray which contains numbers that can be arranged in a continuous sequence.
+No duplicates allowed.
 
 Examples: 
 Input:  arr[] = {10, 12, 11};
