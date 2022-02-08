@@ -35,19 +35,19 @@ Constraints:
 
 int numOfPairs(int X[], int Y[], int N) {
     map<int, int> mp1, mp2;
-    map<pair<int, int>, int> mp3;
-    int cnt1 = 0, cnt2 = 0, cnt3 = 0;
+    map<pair<int, int>, int> mp3;   // test case: (11,11), (11,33), (33, 22), (33, 22)
+    int cnt = 0;
     for(int i = 0; i < N; i++){
-        if(mp1.count(X[i]) == 1) cnt1+= mp1[X[i]];
-        if(mp2.count(Y[i]) == 1) cnt2+= mp2[Y[i]];
-        if(mp3.count({X[i], Y[i]}) == 1) cnt3+= mp3[{X[i], Y[i]}];
+        if(mp1.count(X[i]) == 1) cnt+= mp1[X[i]];
+        if(mp2.count(Y[i]) == 1) cnt+= mp2[Y[i]];
+        if(mp3.count({X[i], Y[i]}) == 1) cnt-= (2*mp3[{X[i], Y[i]}]);
 
         mp1[X[i]]++;
         mp2[Y[i]]++;
         mp3[{X[i], Y[i]}]++;
     }
 
-return (cnt1+cnt2-2*cnt3);
+return cnt;
 }
 
 
