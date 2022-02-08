@@ -50,8 +50,9 @@ vector<int> heapSort(vector<int>& arr, int n){
     
     buildHeap(arr, n);
 
-    for(int i = n-1; i >= 1; i--){ //reduce heap size 1 by 1
+    for(int i = n-1; i >= 1; i--){ 
         swap(arr[0], arr[i]);
+        // remove arr[i] from max_heap
         maxHeapify(arr, i, 0);
     }
 return arr;
