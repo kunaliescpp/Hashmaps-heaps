@@ -14,30 +14,27 @@ Input:  arr[] = {10, 12, 12, 10, 10, 11, 10};
 Output: Length of the longest contiguous subarray is 2 
 */
 
-int findLength(int arr[], int n){
+int solver(vector<int>& v){
  
+    int n = v.size();
     int ans = 0;
     for(int i = 0; i < n-1; i++){
         
-        int mini = arr[i];
-        int maxi = arr[i];
-       
+        int mini = v[i];
+        int maxi = v[i];
         set<int> s;
-        s.insert(arr[i]);
-        
+        s.insert(v[i]);
         for(int j = i+1; j < n; j++){
-            
-            if(s.count(arr[j]) == 1) break;
-            
-            s.insert(arr[j]);
-    
-            int mini = min(mini, arr[j]);
-            int maxi = max(maxi, arr[j]);
-            
-            if(maxi - mini == j-i){
-                int len = j - i + 1;
+            if(s.count(v[j]) == 1) break;
+
+            mini = min(mini, v[j]);
+            maxi = max(maxi, v[j]);
+            if(maxi-mini+1 == j-i+1){
+                int len = j-i+1;
                 ans = max(ans, len);
             }
+
+            s.insert(v[j]);
         }
     }
 
