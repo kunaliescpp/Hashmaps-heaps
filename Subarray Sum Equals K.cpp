@@ -25,20 +25,15 @@ public:
     int subarraySum(vector<int>& nums, int k) {
         
         unordered_map<int , int>um;                     //sum vs sumfreq
-        
         int sum = 0;
         int cnt = 0;
-        
         um[0] = 1;
-        
         for(int i = 0; i < nums.size(); i++){
             sum+= nums[i];
-            
             if(um.find(sum-k) != um.end()) cnt+= um[sum-k];
              
-             um[sum]++;
+            um[sum]++;
         }
-    
     return cnt;
     }
 };
