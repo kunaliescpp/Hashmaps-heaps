@@ -49,37 +49,37 @@ public:
     vector<int> maxSlidingWindow(vector<int>& arr, int k) {
         
         int n = arr.size(); 
-        // Next greater of every element
-             vector<int>v;
-             stack<int>stk;
-        
-             stk.push(n-1);
-             v.push_back(n);
-        
-           for(int i = n-2; i >= 0; i--){
- 
-               while(!stk.empty() && arr[i] >= arr[stk.top()]) stk.pop();
-            
-                  int nextGreater = (stk.empty()) ? (n) : (stk.top());
+        // step 1 : Next greater of every element
+        vector<int>v;
+        stack<int>stk;
 
-                  v.push_back(nextGreater);
-                  stk.push(i);
-            }
+        stk.push(n-1);
+        v.push_back(n);
+        for(int i = n-2; i >= 0; i--){
+            while(!stk.empty() && arr[i] >= arr[stk.top()]) stk.pop();
+
+            int nextGreater = (stk.empty()) ? (n) : (stk.top());
+            v.push_back(nextGreater);
+            stk.push(i);
+        }
         
         reverse(v.begin(), v.end());
         
-        // Slide window
-        vector<int> Vec;
-        int j = 0;
-        for(int i = 0; i <= n-k; i++){
-            if(j < i) j = i;
+        // step 2: Slide window
+        vector<int> ans;
+        int j = 0, i = k-1;
+        int curr = 0;
+        while(i < n){
+            if(curr == j-1) curr = j;
+            while(v[curr] <= i){
+                curr = v[curr];
+            } 
             
-            while(v[j] <= i+k-1) j = v[j];
-            
-           Vec.push_back(arr[j]); 
+            ans.push_back(arr[curr]); 
+            i++; j++;
         }
         
-    return Vec;  
+    return ans; 
     }
 };
 
