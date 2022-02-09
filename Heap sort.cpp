@@ -28,15 +28,15 @@ Explanation Of Sample Input 2: For the first test case, the array [5,-2,3,-1,8] 
 arranging into non-decreasing order. 
 */
   
-void maxHeapify(vector<int> &arr, int n, int i) {
+void maxHeapify(vector<int> &arr, int hsize, int i) {
     
     int largest = i, left = 2*i+1, right = 2*i+2;
-    if(left < n && arr[largest] < arr[left]) largest = left;
-    if(right < n && arr[largest] < arr[right]) largest = right;
+    if(left < hsize && arr[largest] < arr[left]) largest = left;
+    if(right < hsize && arr[largest] < arr[right]) largest = right;
 
     if(largest != i){
         swap(arr[largest], arr[i]);
-        maxHeapify(arr, n, largest);
+        maxHeapify(arr, hsize, largest);
     }
 }
 
