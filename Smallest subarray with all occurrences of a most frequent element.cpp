@@ -24,54 +24,43 @@ Constraints:
 1 ≤ A[i] ≤ 105
 */
 
-class element{
-    public:
-    int freq;
-    int si;
-    int ei;
+vector<int> smallestSubsegment(int arr[], int n){
 
-    element(int f, int s, int e){
-        freq = f;
-        si = s;
-        ei = e;
+    unordered_map<int, int> mp1;
+    unordered_map<int, pair<int, int>> mp2;
+    int max_freq = 0;
+    for(int i = 0; i < n; i++){
+        if(mp2.count(arr[i]) == 0){
+            mp2[arr[i]] = {i, i};
+        } else{
+            mp2[arr[i]].second = i;
+        }
+        mp1[arr[i]]++;
+        max_freq = max(max_freq, mp1[arr[i]]);
     }
-};
 
-vector<int> smallestSubsegment(int a[], int n){
+    int min_len = 1e9;
+    int cand = -1;
+    for(int i = 0; i < n; i++){
+        int ele = arr[i], freq = mp1[arr[i]];
+        if(freq == max_freq){
+            int si = mp2[ele].first;
+            int ei = mp2[ele].second;
+            int len = (ei-si+1);
+            if(len < min_len){
+                cand = ele;
+                min_len = len;
+            }
+        }
+    }
 
-  unordered_map<int, element> mp;;
-  for (int i = 0 ; i < n ; i++){
-      if(mp.count(a[i]) == 1){
-          element e = mp[a[i]];
-          e.freq++;
-          e.ei = i;;
-          mp[a[i]] = e;
-      } else{
-          mp[a[i]] = {1, i, i};
-      }
-  }
+    int si = mp2[cand].first, ei = mp2[cand].second;
+    vector<int> ans;
+    for(int i = si; i <= ei; i++){
+        ans.push_back(arr[i]);
+    }
 
-  int maxFreq = 0;
-  element maxi = {100000, 0, 10000};
-  for (auto x : mp){
-      if(maxFreq < x.second.freq){
-          maxFreq = x.second.freq;
-          maxi = x.second;
-      }
-
-      else if(maxFreq == x.second.freq){
-          int len1 = x.second.ei - x.second.si + 1;
-          int len2 = maxi.ei - maxi.si + 1;
-          if(len1 < len2) maxi = x.second;
-      }
-  }
-
-  vector<int> res;
-  for(int i = maxi.si; i <= maxi.ei; i++){
-      res.push_back(a[i]);
-  }
-
-return res;
+return ans;
 }
-
+        
 
