@@ -26,6 +26,13 @@ Constraints:
 
 class Solution {
 public:
+ 
+    int gcd(int a, int b){
+        if(b == 0) return a;
+        int ans = gcd(b, a%b);    // if(a < b) then a and b swapped in the next call
+    return ans;
+    }
+ 
     bool hasGroupsSizeX(vector<int>& deck) {
         
         unordered_map<int , int>mp;
