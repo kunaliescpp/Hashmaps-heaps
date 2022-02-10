@@ -30,8 +30,8 @@ we turn off all lamps in the red rectangle.
 Example 2:
 Input: n = 5, lamps = [[0,0],[4,4]], queries = [[1,1],[1,1]]
 Output: [1,1]
-Example 3:
 
+Example 3:
 Input: n = 5, lamps = [[0,0],[0,4]], queries = [[0,4],[0,1],[1,4]]
 Output: [1,1,0]
  
