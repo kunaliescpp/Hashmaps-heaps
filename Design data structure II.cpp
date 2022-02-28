@@ -22,8 +22,8 @@ class mystructure {
         bool ans = mp.count(val);
         if(ans == false) return false;
         
-        int idx = *(mp[val].begin());    //wow trick
-        mp[val].erase(mp[val].begin());
+        auto it = mp[val].begin();
+        int idx = *it;
         
         int temp = v.back();
         v[idx] = temp;
