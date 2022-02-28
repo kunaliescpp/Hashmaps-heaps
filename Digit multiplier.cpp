@@ -2,7 +2,7 @@
 
 Digit multiplier 
 
-Given a positive integer N, find the smallest number 'num' such that the product of all the digits of S is equal to the number N. 
+Given a positive integer N, find the smallest number 'num' such that the product of all the digits of 'num' is equal to the number N. 
 If there's no such number, Print "-1".
 
 Example 1:
