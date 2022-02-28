@@ -8,22 +8,22 @@ class mystructure {
    public:
     
     vector<int> v;
-    unordered_map<int, unordered_set<int>> mp;                  // 5 ->  idx | true
+    map<int, set<int>> mp;                  // 5 ->  idx | true
     
     bool insert(int val) {
         bool ans = mp.count(val);
         v.push_back(val);
         mp[val].insert(v.size()-1);
-    
     return (1-ans);
     }
     
     bool remove(int val){
-        bool ans = mp.count(val);
-        if(ans == false) return false;
-        
+        if(mp.count(val) == 0) return false;
+    
         auto it = mp[val].begin();
         int idx = *it;
+        // int idx = *(mp[val].begin());   
+        mp[val].erase(mp[val].begin());
         
         int temp = v.back();
         v[idx] = temp;
@@ -36,7 +36,7 @@ class mystructure {
     return true;
     }
     
-    int getRandom() {  
+    int getRandom() {     
         int random = v[rand() % (v.size())];
     return random;
     }
