@@ -28,7 +28,7 @@ string getSmallest(long long n) {
     while(n > 1 && factor > 1){
 
         if(n % factor == 0){
-            str += (factor+'0');
+            str += (char)(factor+'0');
             n = n/factor;
         } else{
             factor--;
