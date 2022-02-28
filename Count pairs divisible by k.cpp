@@ -22,9 +22,9 @@ Constraints :
 1 <= K <= 100
 */
 
-int countKdivPairs(int v[], int n, int quo){
+int countKdivPairs(int v[], int n, int div){
     for(int i = 0; i < n; i++){
-        int rem = v[i]%quo;
+        int rem = v[i]%div;
         v[i] = rem;
     }
 
@@ -32,7 +32,7 @@ int countKdivPairs(int v[], int n, int quo){
     int cnt = 0;
     for(int i = 0; i < n; i++){
         if(v[i] == 0 && mp.count(0) == 1) cnt+= mp[0];
-        else cnt+= mp[quo-v[i]];
+        else cnt+= mp[div-v[i]];
 
         mp[v[i]]++;
     }
