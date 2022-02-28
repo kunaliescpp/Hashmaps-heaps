@@ -29,15 +29,15 @@ arranging into non-decreasing order.
 */
   
 void max_heapify(vector<int>& v, int heap_size, int idx){
-    int pi = idx;
+    int pri = idx;
     int lci = 2*idx+1;
     int rci = 2*idx+2;
-    if(lci < heap_size && v[pi] < v[lci]) pi = lci;
-    if(rci < heap_size && v[pi] < v[rci]) pi = rci;
+    if(lci < heap_size && v[pri] < v[lci]) pri = lci;
+    if(rci < heap_size && v[pri] < v[rci]) pri = rci;
     
-    if(pi != idx){
-        swap(v[idx], v[pi]);
-        max_heapify(v, heap_size, pi);
+    if(pri != idx){
+        swap(v[idx], v[pri]);
+        max_heapify(v, heap_size, pri);
     }
 }
 
