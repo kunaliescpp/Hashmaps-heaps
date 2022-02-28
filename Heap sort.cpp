@@ -28,33 +28,53 @@ Explanation Of Sample Input 2: For the first test case, the array [5,-2,3,-1,8] 
 arranging into non-decreasing order. 
 */
   
-void maxHeapify(vector<int> &arr, int hsize, int i) {
+//author: kunaliescpp
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long int
+#define mod 1000000007
+
+// heap_sort
+void max_heapify(vector<int>& v, int heap_size, int idx){
+    int pi = idx;
+    int lci = 2*idx+1;
+    int rci = 2*idx+2;
+    if(lci < heap_size && v[pi] < v[lci]) pi = lci;
+    if(rci < heap_size && v[pi] < v[rci]) pi = rci;
     
-    int largest = i, left = 2*i+1, right = 2*i+2;
-    if(left < hsize && arr[largest] < arr[left]) largest = left;
-    if(right < hsize && arr[largest] < arr[right]) largest = right;
-
-    if(largest != i){
-        swap(arr[largest], arr[i]);
-        maxHeapify(arr, hsize, largest);
+    if(pi != idx){
+        swap(v[idx], v[pi]);
+        max_heapify(v, heap_size, pi);
     }
 }
 
-void buildHeap(vector<int> &arr, int n){
-    for(int i = (n-2)/2; i >= 0; i--){              // parent = (n-1)/2 
-        maxHeapify(arr, n, i);      
-    }
-}
-
-vector<int> heapSort(vector<int>& arr, int n){
+vector<int> solver(vector<int>& v){
+    int n = v.size();
     
-    buildHeap(arr, n);
-
-    for(int i = n-1; i >= 1; i--){ 
-        swap(arr[0], arr[i]);
-        // remove arr[i] from max_heap
-        maxHeapify(arr, i, 0);
+    // step-1: build_heap
+    for(int i = (n-1-1)/2; i >= 0; i--){
+        max_heapify(v, n, i);
     }
-return arr;
+    
+    // step-2: first_ele of max_heap = last_ele of sorted array
+    for(int i = n-1; i >= 1; i--){
+        swap(v[0], v[i]);
+        max_heapify(v, i, 0);
+    }
+
+return v;
 }
+
+int32_t main() {
+
+    int n; cin >> n;
+    vector<int>v(n);
+    for(int &i: v) cin >> i;
+    
+    vector<int> ans = solver(v);
+    for(int &i: ans) cout << i << " ";
+    
+  return 0;
+}
+
 
