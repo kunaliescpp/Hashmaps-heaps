@@ -28,13 +28,6 @@ Explanation Of Sample Input 2: For the first test case, the array [5,-2,3,-1,8] 
 arranging into non-decreasing order. 
 */
   
-//author: kunaliescpp
-#include <bits/stdc++.h>
-using namespace std;
-#define int long long int
-#define mod 1000000007
-
-// heap_sort
 void max_heapify(vector<int>& v, int heap_size, int idx){
     int pi = idx;
     int lci = 2*idx+1;
@@ -63,18 +56,6 @@ vector<int> solver(vector<int>& v){
     }
 
 return v;
-}
-
-int32_t main() {
-
-    int n; cin >> n;
-    vector<int>v(n);
-    for(int &i: v) cin >> i;
-    
-    vector<int> ans = solver(v);
-    for(int &i: ans) cout << i << " ";
-    
-  return 0;
 }
 
 
