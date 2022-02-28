@@ -25,7 +25,7 @@ bool sameFreq(string s){
     vector<int>freq(26, 0);
     for(char c: s) freq[c-'a']++;
 
-    map<int, int> mp;
+    map<int, int> mp;   // mp[freq] = num_char
     for(int i = 0; i < 26; i++){
         if(freq[i] > 0) mp[freq[i]]++;
     } 
