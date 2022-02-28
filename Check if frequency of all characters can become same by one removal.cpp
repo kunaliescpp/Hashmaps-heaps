@@ -33,9 +33,9 @@ bool sameFreq(string s){
     if(mp.size() == 1) return true;
     else if(mp.size() == 2){
         auto it = mp.begin();
-        int x1 = it->first, y1 = it->second;
+        int x1 = (*it).first, y1 = (*it).second;
         it++;
-        int x2 = it->first, y2 = it->second;
+        int x2 = (*it).first, y2 = (*it).second;
         if(x1 == 1 && y1 == 1) return true;
         else if(y2==1 && (x2==(x1+1))) return true;
         else return false;
