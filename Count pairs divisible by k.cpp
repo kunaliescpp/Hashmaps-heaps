@@ -22,17 +22,21 @@ Constraints :
 1 <= K <= 100
 */
 
-int countKdivPairs(int A[], int n, int k){
-
-    unordered_map<int, int> mp;
-    int cnt = 0;
-    for(int i = 0; i < n; i++){ 
-        int r1 = A[i]%k;
-        int r2 = (k - r1)%k;
-        if(mp.count(r2) == 1) cnt += mp[r2];
-
-        mp[r1]++;
+int countKdivPairs(int v[], int n, int quo){
+    for(int i = 0; i < n; i++){
+        int rem = v[i]%quo;
+        v[i] = rem;
     }
+
+    map<int, int> mp;
+    int cnt = 0;
+    for(int i = 0; i < n; i++){
+        if(v[i] == 0 && mp.count(0) == 1) cnt+= mp[0];
+        else cnt+= mp[quo-v[i]];
+
+        mp[v[i]]++;
+    }
+
 return cnt;
 }
 
