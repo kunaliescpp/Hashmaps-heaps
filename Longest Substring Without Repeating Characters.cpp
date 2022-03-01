@@ -20,22 +20,24 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 */
 
-class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-        
-        unordered_map<char, int>mp;
-        int maxi = 0;
-        int i = 0, j = 0;
-        while(i < s.size()){
-            if(mp.count(s[i]) == 1) j = max(j, mp[s[i]]+1);   // test case - "abba"
-            
-            mp[s[i]] = i; 
-            maxi = max(maxi, i-j+1);
-            i++;
+int lengthOfLongestSubstring(string str) {
+    int n = str.size();
+
+    map<char, int> mp;
+    int len = 0;
+    int i = 0, j = 0;
+    while(i < n){
+        if(mp.count(str[i]) == 1){
+            int prv_idx = mp[str[i]];
+            if(prv_idx >= j) j = prv_idx+1;
         }
-    return maxi;  
+
+        len = max(len, i-j+1);
+        mp[str[i]] = i;
+        i++;
     }
-};
+
+return len;
+}
 
 
