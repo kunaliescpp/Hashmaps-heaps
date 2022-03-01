@@ -50,9 +50,10 @@ string fractionToDecimal(int num, int den) {
 
     // step2: if fractional part is repeating or not
     str+= ".";
-    map<int, int> mp;
+    map<int, int> mp;  // mp[rem] = quo_size
     while(rem != 0){
         if(mp.count(rem) == 1){
+            // quo repeating idx = 1 + idx of prv occu of rem 
             str.insert(mp[rem]+1-1, "(");
             str+= ")";
             return str;
