@@ -41,32 +41,29 @@ Constraints:
 0 <= positioni <= positioni+1 < target
 1 <= fueli < 10^9
 */ 
-  
-class Solution {
-public:
-    //Time complexity : O(n log n)
-    int minRefuelStops(int target, int startFuel, vector<vector<int>>& stations) {
-        
-        int n = stations.size();
-        priority_queue<int> pq;
-        
-        int curr = startFuel;
-        int cnt = 0, i = 0;
-        while(curr < target){
-            
-            while( i < n && curr >= stations[i][0]){
-                pq.push(stations[i][1]);
-                i++;
-            } 
-            
-            if(pq.empty() == true) return -1;   // nearest spot tak bhi nhi reach kar paye
-            
-            curr = curr + pq.top(); pq.pop();   
-            cnt++;
+
+int minRefuelStops(int target, int startFuel, vector<vector<int>>& stations) {
+    int n = stations.size();
+
+    priority_queue<pair<int, int>> pq;
+    int cnt = 0;
+    int idx = 0;
+    int curr = startFuel;
+    while(curr < target){
+        // push all stations in pq till now
+        while(idx < n && stations[idx][0] <= curr){
+            pq.push({stations[idx][1], stations[idx][0]});
+            idx++;
         }
 
-    return  cnt;
-    }
-};
+        if(!pq.empty() && curr >= pq.top().second){
+            curr+= (pq.top().first);
+            pq.pop();
+        } 
+        else return -1;
+        cnt++;
+    } 
+return cnt;
+}
 
 
