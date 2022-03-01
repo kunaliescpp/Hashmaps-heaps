@@ -15,23 +15,25 @@ Output: false
 */
     
 bool isReflected(vector<vector<int>> &points) {
+    int n = points.size();
 
-  int n = points.size();
-  int maxi = INT_MIN, mini = INT_MAX;
-  unordered_map<int, set<int> > mp;
+    set<pair<int, int>> s;
+    int maxi = -1e9, mini = 1e9;
+    for(int i = 0; i < n; i++){
+        mini = min(mini, points[i][0]);
+        maxi = max(maxi, points[i][0]);
+        s.insert({points[i][0], points[i][1]});
+    }
 
-  for(int i = 0; i < n; i++){
-      mini = min(mini, points[i][0]);
-      maxi = max(maxi, points[i][0]);
-      mp[points[i][0]].insert(points[i][1]); 
-  }
+    for(int i = 0; i < n; i++){
+        int x1 = points[i][0], y1 = points[i][1];
+        if(s.count({x1, y1}) == 0) continue;
 
-  double alpha = double (maxi + mini)/2.0;    // alpha = candidate of line || to y axis
-  for(int i = 0; i < n; i++){
-      int x2 = 2*alpha-points[i][0];  
-    
-      if(mp.count(x2) == false || mp[x2].count(points[i][1]) == false) return false;
-  }
+        int x2 = mini+maxi-x1;
+        if(s.count({x2, y1}) == 0) return false;
+        s.erase({x1, y1}), 
+        s.erase({x2, y1});
+    }
 return true;
 }
 
