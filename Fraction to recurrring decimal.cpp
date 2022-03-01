@@ -53,7 +53,7 @@ string fractionToDecimal(int num, int den) {
     map<int, int> mp;
     while(rem != 0){
         if(mp.count(rem) == 1){
-            str.insert(mp[rem], "(");
+            str.insert(mp[rem]+1-1, "(");
             str+= ")";
             return str;
         } else{
