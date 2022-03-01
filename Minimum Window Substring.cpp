@@ -30,46 +30,46 @@ n == t.length
 s and t consist of uppercase and lowercase English letters.
 */
 
-class Solution {
-public:
-    
-    bool isPossible(map<char, int>& mpt, map<char, int>& mps){
-        
-        for(auto [ch, freq] : mpt){
-            if(freq > mps[ch]) return false;
-        }
-    return true;
+bool solver(map<char, int>& mp1, map<char, int>& mp2){
+    for(auto x: mp2){
+        int ch_p = x.first, freq_p = x.second;
+        if(freq_p > mp1[ch_p]) return false;
     }
-    
-    string minWindow(string s, string t) {
-        
-        map<char, int> mpt, mps;
-        for(int i = 0; i < t.size(); i++){
-            mpt[t[i]]++;
-        }
-    
-        int i = 0, j = 0, start;
-        int len = INT_MAX;
-        while(j < s.size()){
-            
-            mps[s[j]]++;
-            if(isPossible(mpt, mps) == true){
-               // ok and smallest string
-               while(mps[s[i]] > mpt[s[i]]){
-                   mps[s[i]]--;
-                   i++;
-               } 
-                
-               int curr_len = j - i + 1;
-                if(curr_len < len){
-                    len = curr_len;
-                    start = i;
-                }
-            }    
-            j++;
-        } // while loop ends here
-    return len == INT_MAX ? "" : s.substr(start, len);
+return true;
+}
+
+string minWindow(string s, string t) {
+    int m = s.size(), n = t.size();
+
+    map<char, int> mp1, mp2;
+    for(int i = 0; i < n; i++){
+        mp2[t[i]]++;
     }
-};
+
+    int len = 1e9;
+    int sp = 0, ep = 0;
+    int i = 0, j = 0;
+    while(i < m){
+        mp1[s[i]]++;
+        if(solver(mp1, mp2) == 1){
+            while(mp1[s[j]] > mp2[s[j]]){
+                mp1[s[j]]--;
+                j++;
+            }
+
+            int curr_len = i-j+1;
+            if(curr_len < len){
+                len = curr_len;
+                sp = j;
+                ep = i;
+            }
+        } 
+        i++;
+    }
+
+    if(len == 1e9) return "";
+
+return s.substr(sp, ep-sp+1);
+}
 
 
