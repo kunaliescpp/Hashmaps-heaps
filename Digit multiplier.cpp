@@ -18,20 +18,19 @@ Explanation: There are no numbers which can form a product of 26 with its digits
 Constraints:
 1 <= N <= 109
 */
-    
+   
+// limitation : every digit should be single (i.e. 0 <= divisor >= 9)
 string getSmallest(long long n) {
-
     if(n == 1) return "1";
     string str = "";
-    int factor = 9;
-
-    while(n > 1 && factor > 1){
-
-        if(n % factor == 0){
-            str += (char)(factor+'0');
-            n = n/factor;
+    
+    int div = 9;             // smallest combination
+    while(n > 1 && div > 1){
+        if(n % div == 0){
+            str += (char)(div+'0');
+            n = n/div;
         } else{
-            factor--;
+            div--;
         }
     }
 
