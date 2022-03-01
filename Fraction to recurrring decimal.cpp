@@ -32,43 +32,37 @@ Constraints:
 denominator != 0
 */
   
-
 string fractionToDecimal(int num, int den) {
 
-    //step 1 
+    //step 1: check negative or not
     bool neg = false;
     if(num > 0 && den < 0) neg = true;
     else if(num < 0 && den > 0) neg = true;
 
-    string ans = "";
-    if(neg == true) ans += "-"; 
-
+    string str = "";
+    if(neg == true) str+= "-"; 
     num = abs(num);
     den = abs(den);
 
-    // step 2
-    ans += to_string(num/den);
+    str+= to_string(num/den);
     int rem = num % den;
-    if(rem == 0) return ans;
+    if(rem == 0) return str;
 
-    ans += ".";
-    unordered_map<int, int> mp;
+    // step2: if fractional part is repeating or not
+    str+= ".";
+    map<int, int> mp;
     while(rem != 0){
         if(mp.count(rem) == 1){
-            ans += ")";
-            ans.insert(mp[rem], "(");
-            break;
+            str.insert(mp[rem], "(");
+            str+= ")";
+            return str;
         } else{
-            mp[rem] = ans.size();
-
-            // if(num < den) rem = num 
-            rem = rem*10;                         // rem = num = 40*10
-            ans+= to_string(rem / den);           // ans+= (400/333)
-            rem = rem % den;                      // rem = num = 67
+            mp[rem] = str.size();
+            str+= ((rem*10)/den)+'0';
+            rem = (rem*10)%den;
         }
     }
-
-return ans;  
+return str;
 }
 
 
