@@ -44,43 +44,46 @@ Constraints:
 1 <= k <= nums.length
 */
 
-class Solution {
-public:
-    vector<int> maxSlidingWindow(vector<int>& arr, int k) {
-        
-        int n = arr.size(); 
-        // step 1 : Next greater of every element
-        vector<int>v;
-        stack<int>stk;
+vector<int> solver(vector<int> v){
+    int n = v.size();
 
-        stk.push(n-1);
-        v.push_back(n);
-        for(int i = n-2; i >= 0; i--){
-            while(!stk.empty() && arr[i] >= arr[stk.top()]) stk.pop();
+    vector<int> ng;
+    stack<int> stk;
+    stk.push(n-1);
+    ng.push_back(n);
+    for(int i = n-2; i >= 0; i--){
+        while(!stk.empty() && v[i] >= v[stk.top()]){
+            stk.pop();
+        }
 
-            int nextGreater = (stk.empty()) ? (n) : (stk.top());
-            v.push_back(nextGreater);
-            stk.push(i);
-        }
-        
-        reverse(v.begin(), v.end());
-        
-        // step 2: Slide window
-        vector<int> ans;
-        int j = 0, i = k-1;
-        int curr = 0;
-        while(i < n){
-            if(curr == j-1) curr = j;
-            while(v[curr] <= i){
-                curr = v[curr];
-            } 
-            
-            ans.push_back(arr[curr]); 
-            i++; j++;
-        }
-        
-    return ans; 
+        if(stk.empty()) ng.push_back(n);
+        else ng.push_back(stk.top());
+        stk.push(i);
     }
-};
+
+    reverse(ng.begin(), ng.end());
+return ng;
+}
+
+vector<int> maxSlidingWindow(vector<int>& v, int k) {
+    int n = v.size();
+
+    vector<int> ng = solver(v);
+    vector<int> ans;
+    int i = k-1, j = 0;
+    int ptr = 0;
+    while(i < n){
+        if(ptr == j-1) ptr = j;
+        while(ptr < i){
+            int curr = ptr, next = ng[ptr];
+            if(next <= i && v[curr] < v[next]) ptr = next;
+            else break;
+        }
+        ans.push_back(v[ptr]);
+        i++; j++;
+    }
+
+return ans;
+}
 
 
