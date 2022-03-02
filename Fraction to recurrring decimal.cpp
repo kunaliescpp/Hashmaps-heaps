@@ -53,7 +53,7 @@ string fractionToDecimal(int num, int den) {
     map<int, int> mp;  // mp[rem] = quo_size
     while(rem != 0){
         if(mp.count(rem) == 1){
-            // quo repeating idx = 1 + idx of prv occu of rem      // test case: num = 1, den = 6
+            // idx of num = mp[rem]+1     // test case: num = 1, den = 6
             str.insert(mp[rem]+1-1, "(");
             str+= ")";
             return str;
