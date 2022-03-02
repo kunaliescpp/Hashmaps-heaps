@@ -27,22 +27,17 @@ Constraints:
 
 int sortingCost(int n, int arr[]){
 
-  unordered_map<int, int> mp;
+    // lis on permutation from 1->n
+    map<int, int> mp;
+    int maxi = 0;
+    for(int i = 0; i < n; i++){
+        if(mp.count(arr[i]-1) == 1) mp[arr[i]] = mp[arr[i]-1] + 1;
+        else mp[arr[i]] = 1;
 
-  int maxi = 0;
-  for(int i = 0; i < n; i++){
+        maxi = max(maxi, mp[arr[i]]);
+    }
 
-      if(mp.count(arr[i]-1) == 1){
-          mp[arr[i]] = mp[arr[i]-1] + 1;
-      } else {
-          mp[arr[i]] = 1;
-      }
-
-      maxi = max(maxi, mp[arr[i]]);
-  }
-
-  int cnt = n - maxi;
-
+    int cnt = n - maxi;
 return cnt;
 }
 
