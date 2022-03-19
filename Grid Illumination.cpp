@@ -46,3 +46,48 @@ queries[j].length == 2
 0 <= rowj, colj < n
 */
 
+vector<int> gridIllumination(int n, vector<vector<int>>& lamps, vector<vector<int>>& queries) {
+    int lsz = lamps.size(), qsz = queries.size();
+
+    vector<vector<int>> dir = {{-1,-1},{-1,0},{-1,1},{0,-1},{0,0},{0,1},{1,-1},{1,0},{1,1}};
+
+    unordered_map<int,int> row, col, diag, rdiag;
+    set<pair<int,int>> s;
+    for(int i = 0; i < lsz; i++){
+        int x = lamps[i][0];
+        int y = lamps[i][1];
+
+        if(s.count({x,y}) == 0){
+            s.insert({x,y});
+            row[x]++;
+            col[y]++;
+            diag[x-y]++;
+            rdiag[y+x]++;
+        }
+    }
+
+    vector<int> ans;
+    for(int i = 0; i < qsz; i++){
+        int x = queries[i][0];
+        int y = queries[i][1];
+
+        if(row[x] > 0 || col[y] > 0 || diag[x-y] > 0 || rdiag[y+x] > 0){
+            ans.push_back(1);
+            for(int j = 0; j < 9; j++){
+                int nx = x + dir[j][0];
+                int ny = y + dir[j][1];
+
+                if(nx >= 0 && nx < n && ny >= 0 && ny < n && s.count({nx, ny}) == 1){
+                    s.erase({nx,ny});
+                    row[nx]--;
+                    col[ny]--;
+                    diag[nx-ny]--;
+                    rdiag[ny+nx]--;
+                }
+            }  
+        }
+
+        else ans.push_back(0);
+    }
+return ans;
+}
